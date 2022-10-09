@@ -1,3 +1,3 @@
-def runnerVersion="v2.299.2"
+def runnerVersion="v2.298.2"
 
-def runnerCheckSum="0bfd792196ce0ec6f1c65d2a9ad00215b2926ef2c416b8d9761526519447237"
+def runnerCheckSum="0bfd792196ce0ec6f1c65d2a9ad00215b2926ef2c416b8d97615265194477117"
