@@ -5,6 +5,7 @@ import sys
 import requests
 import smtplib, ssl
 import github
+import boto3
 
 #variables
 #Git UserName
@@ -12,27 +13,35 @@ username = 'geethapalyam'
 #Git Repo Name
 repoName = 'palyam_test'
 #Git access Token
-Access_token = "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"
+Access_token = "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"
 #release URL https://api.github.com/repos/{owner}/{repo}/releases/latest
 Rekease_url = "https://api.github.com/repos/actions/runner/releases/latest"
 #yaml File path
 file_path = "runner-test.txt"
 #webhook url for slack notification
-webhook_url = "https://hooks.slack.com/services/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"
-# sender email for the mail notification.
-sender_email = "geetha.palyam@gmail.com"
+webhook_url = "https://hooks.slack.com/services/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"
+
+#sender email for the mail notification.
+#sender_email = "geetha.palyam@gmail.com"
 # Gmail app password
-password = 'bxzfhznmmbcxzpqe'
+# password = 'bxzfhznmmbcxzpqe'
+client = boto3.client('ssm')  # Creates an Amazon Simple Systems Manager client
+# webhook_url = client.get_parameter(Name='/test/check/webhook_url', WithDecryption=True)["Parameter"]["Value"]
+sender_email = client.get_parameter(Name='/test/check/sender_email', WithDecryption=True)["Parameter"]["Value"]
+password = client.get_parameter(Name='/test/check/sender_email_password', WithDecryption=True)["Parameter"]["Value"]
+print("sender_email", sender_email)
+print("password", password)
 # Email notification reciever
 receiver_email = "palyamgeetha@gmail.com"
-
+#branch name
 branch_name = "runner"
-
+#slack channel receives notification 
 channel_name = "#git-script"
 
 g = Github(Access_token)
 
 repo = g.get_repo('{}/{}'.format(username, repoName))
+print(username,password)
 
 #Getting the version and checksum of the latest release.
 response = requests.get(Rekease_url)
@@ -128,3 +137,4 @@ if runnerVersion.group(1) != response.json()['name']:
         server.quit()
 else:
     print("You are on the latest version")
+    
