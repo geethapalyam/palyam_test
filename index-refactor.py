@@ -19,7 +19,7 @@ Rekease_url = "https://api.github.com/repos/actions/runner/releases/latest"
 #yaml File path
 file_path = "runner-test.txt"
 #webhook url for slack notification
-webhook_url = "https://hooks.slack.com/services/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"
+webhook_url = "https://hooks.slack.com/services/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"
 
 #sender email for the mail notification.
 #sender_email = "geetha.palyam@gmail.com"
