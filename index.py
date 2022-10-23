@@ -24,11 +24,12 @@ webhook_url = "https://hooks.slack.com/services/T0454JQ7L5B/B046FKYAY9E/PesusdUL
 #sender email for the mail notification.
 #sender_email = "geetha.palyam@gmail.com"
 # Gmail app password
-# password = 'bxzfhznmmbcxzpqe'
+# password = 'kndtknppilckttof'
 client = boto3.client('ssm')  # Creates an Amazon Simple Systems Manager client
 # webhook_url = client.get_parameter(Name='/test/check/webhook_url', WithDecryption=True)["Parameter"]["Value"]
 sender_email = client.get_parameter(Name='/test/check/sender_email', WithDecryption=True)["Parameter"]["Value"]
 password = client.get_parameter(Name='/test/check/sender_email_password', WithDecryption=True)["Parameter"]["Value"]
+
 print("sender_email", sender_email)
 print("password", password)
 # Email notification reciever
