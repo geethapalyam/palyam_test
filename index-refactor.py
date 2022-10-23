@@ -13,7 +13,7 @@ username = 'geethapalyam'
 #Git Repo Name
 repoName = 'palyam_test'
 #Git access Token
-Access_token = "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"
+Access_token = "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"
 #release URL https://api.github.com/repos/{owner}/{repo}/releases/latest
 Rekease_url = "https://api.github.com/repos/actions/runner/releases/latest"
 #yaml File path
