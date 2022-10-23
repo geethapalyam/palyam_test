@@ -12,22 +12,20 @@ import boto3
 username = 'geethapalyam'
 #Git Repo Name
 repoName = 'palyam_test'
-#Git access Token
-Access_token = "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"
 #release URL https://api.github.com/repos/{owner}/{repo}/releases/latest
 Rekease_url = "https://api.github.com/repos/actions/runner/releases/latest"
 #yaml File path
 file_path = "runner-test.txt"
-#webhook url for slack notification
-webhook_url = "https://hooks.slack.com/services/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"
-
 #sender email for the mail notification.
 #sender_email = "geetha.palyam@gmail.com"
 # Gmail app password
 # password = 'kndtknppilckttof'
+
 client = boto3.client('ssm')  # Creates an Amazon Simple Systems Manager client
 sender_email = client.get_parameter(Name='/test/check/sender_email', WithDecryption=True)["Parameter"]["Value"]
 password = client.get_parameter(Name='/test/check/sender_email_password', WithDecryption=True)["Parameter"]["Value"]
+Access_token = client.get_parameter(Name='/test/check/access_token', WithDecryption=True)["Parameter"]["Value"]
+webhook_url = client.get_parameter(Name='/test/check/webhook', WithDecryption=True)["Parameter"]["Value"]
 
 print("sender_email", sender_email)
 print("password", password)
